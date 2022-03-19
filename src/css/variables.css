@@ -1,0 +1,66 @@
+/* === fonts === */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600&family=Poppins:wght@200;300;400;500;600&display=swap');
+
+/* ======= root variable====== */
+
+:root{
+    --header-height: 3rem;
+
+    /* === colors palette === */
+    --primary: hsl(250, 69%, 61%);
+    --primary-light: hsl(249, 26%, 55%);
+    --primary-dark: hsl(250, 76%, 55%);
+    --primary-darker: hsl(250, 88%, 41%);
+
+    --secondary: hsl(269, 52%, 64%);
+    --secondary-dark: hsl(271, 75%, 27%);
+    --secondary-darker: hsl(274, 75%, 22%);
+
+    --accent:hsl(290, 80%, 20%);
+    --red-color:hsl(0, 76%, 50%);
+    --simple:hsl(195, 60%, 66%);
+    --warning:hsl(60, 83%, 49%);
+
+
+    --text-color-dark:hsl(0, 2%, 11%);
+    --text-color:hsl(0, 0%, 20%);
+    --text-color-light:hsl(0, 4%, 39%);
+
+    --body-color:hsl(0, 5%, 96%);
+    --white-color: hsl(0, 0%, 100%);
+
+
+    --box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
+    --box-shadow-dark: 2px 8px 14px rgba(0,0,0,0.7);
+
+    /* ==== body font === */
+    --body-font: 'Poppins', sans-serif;
+    --brand-font: 'Dancing Script', cursive;
+
+    /* .5rem =8px , 1rem =16px , 1.5rem =24px .... */
+    --big-font-size: 2rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1.125rem;
+    --normal-font-size: .938rem;
+    --small-font-size: .813rem;
+    --smaller-font-size: .75rem;
+
+    /* ===font-weight=== */
+    --font-medium: 500;
+    --font-semi-bold:600;
+    --font-bold:800;
+
+    /* === margin-bottom === */
+    --mb-0-25: 0.25rem;
+    --mb-0-5: 0.5rem;
+    --mb-0-75: 0.75rem;
+    --mb-1: 1rem;
+    --mb-1-5: 1.5rem;
+    --mb-2: 2rem;
+    --mb-2-5: 2.5rem;
+    --mb-3: 3rem;
+}
