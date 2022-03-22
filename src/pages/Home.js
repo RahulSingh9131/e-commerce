@@ -2,6 +2,7 @@ import React from 'react';
 import HeroImage from "../assets/hero-img.png";
 import { Link } from 'react-router-dom';
 import "../css/main.css";
+import { categories } from '../backend/db/categories';
 
 function Home() {
   return (
@@ -57,30 +58,16 @@ function Home() {
                         <span>s</span>
                     </h1>
                     <div className="box-container">
-                        <div className="box">
-                            <img src="https://images.unsplash.com/photo-1552422554-0d5af0c79fc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="category-image"/>
-                            <div className="content">
-                                <h1>Formal Shoes</h1>
-                                <p>Shop from a wide range of formal shoes.</p>
-                                <Link to="/" className='btn'>see More</Link>
-                            </div>
-                        </div>
-                        <div className="box">
-                            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="category-image"/>
-                            <div className="content">
-                                <h1>Sports Shoes</h1>
-                                <p>Shop from a wide range of sports shoes.</p>
-                                <Link to="/" className='btn'>see More</Link>
-                            </div>
-                        </div>
-                        <div className="box">
-                            <img src="https://images.unsplash.com/photo-1481729379561-01e43a3e1ed4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=970&q=80" alt="category-image"/>
-                            <div className="content">
-                                <h1>Boots</h1>
-                                <p>Shop from a wide range of boots.</p>
-                                <Link to="/" className='btn'>see More</Link>
-                            </div>
-                        </div>
+                        {categories.map((item)=>{
+                            return (<div className='box'>
+                                <img src={item.src} alt="category-img"/>
+                                <div className='content'>
+                                    <h1>{item.categoryName}</h1>
+                                    <p>{item.description}</p>
+                                    <Link to="/" className='btn' >See More</Link>
+                                </div>
+                            </div>)
+                        })}
                     </div>
                 </div>
             </section>
