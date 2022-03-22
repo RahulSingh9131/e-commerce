@@ -12,7 +12,7 @@ function Home() {
             <header>
                 <div className="container">
                     <div className="logo">
-                        <h3><Link to="/">ShoeStore</Link></h3>
+                        <h3 ><Link to="/" className='brand-name'>ShoeStore</Link></h3>
                     </div>
                     <div className="links">
                         <ul>
