@@ -1,0 +1,94 @@
+/* css for header */
+header .logo{
+    font-family: var(--brand-font);
+}
+header .logo h3{
+    font-size: var(--big-font-size);
+}
+
+/* css for showcase-area section */
+
+.showcase-area .right-side{
+    overflow: hidden;
+    position: relative;
+}
+.showcase-area .right-side img{
+    transform: rotate(-35deg);
+}
+.showcase-area .right-side::before{
+    content: "";
+    position: absolute;
+    margin-left: var(--mb-1);
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    background-color: var(--primary-light);
+}
+
+/* css for categories section */
+
+.heading{
+    text-align: center;
+    padding: 1.5rem 0;
+}
+.heading span{
+    font-size: var(--big-font-size);
+    color: var(--primary-dark);
+    background: var(--simple);
+    padding: .2rem .7rem;
+    margin: 0 var(--mb-0-25);
+    border-radius: .5rem;
+    font-weight: var(--font-semi-bold);
+    text-transform: uppercase;
+}
+.category .box-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+.category .box-container .box{
+    flex: 1 1 25rem;
+    overflow: hidden;
+    border: .5rem solid var(--primary-light);
+    border-radius: .5rem;
+    height: 25rem;
+    position: relative;
+    box-shadow: var(--box-shadow);
+}
+.category .box-container .box img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.category .box-container .box .content{
+    position: absolute;
+    left: 0; top: -100%;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background: var(--body-color);
+    padding: 2rem;
+    padding-top: 5rem;
+}
+.category .box-container .box:hover .content{
+    top: 0;
+    transition: all .3s linear;
+}
+.category .box-container .box .content h1{
+    font-size: var(--h1-font-size);
+    color: var(--secondary);
+}
+.category .box-container .box .content p{
+    font-size: var(--h3-font-size);
+    color: var(--text-color);
+    text-transform: capitalize;
+    padding: .5rem 0;
+}
+.category .box-container .box .content .btn{
+    display: block;
+    text-align: center;
+    font-size: 1.7rem;
+    padding: .5rem .7rem;
+    max-width: 15rem;
+    margin: 1rem auto;
+}

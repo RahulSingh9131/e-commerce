@@ -1,4 +1,8 @@
 @media screen and (max-width: 870px){
+    header .logo .brand-name{
+        display: inline-block ;
+        font-size: var(--h1-font-size);
+    }
     .showcase-area .right-side::before{
         margin-left: var(--mb-1-5);
         width: 10rem;
@@ -13,4 +17,5 @@
         padding: .1rem .3rem;
         border-radius: .3rem;
     }
+   
 }
