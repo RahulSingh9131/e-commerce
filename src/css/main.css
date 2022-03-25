@@ -2,5 +2,6 @@
 @import url("./utils.css");
 @import url("./variables.css");
 @import url("./screens/home.css");
+@import url("./screens/productListing.css");
 
 @import url("./mediaQueries.css");

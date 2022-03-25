@@ -1,0 +1,94 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css");
+
+.header{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+}
+.header .brand-name{
+    font-size: var(--h1-font-size);
+    color: var(--white-color);
+    font-family: var(--brand-font);
+}
+.nav-links :link {
+    margin-right: var(--mb-1-5);
+    font-size: var(--h3-font-size);
+    position: relative;
+}
+.nav-links :link strong{
+    position: absolute;
+    padding: .3rem;
+    border-radius: 50%;
+    background-color:var(--secondary);
+    top: -.9rem;
+    right: -.6rem;
+}
+
+section{
+    padding: 2rem 0rem;
+    margin-top: var(--mb-3);
+}
+.product-btn{
+    border: none;
+    background-color: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+}
+section .left-subcontent{
+    background-color: var(--body-color);
+    padding: 1rem .8rem;
+    flex: .3;
+    font-size: var(--small-font-size);
+}
+.left-subcontent h3{
+    margin-bottom: var(--mb-0-75);
+}
+.input-box{
+    display: flex;
+    align-items: center;
+    padding: .3rem;
+    margin-bottom: var(--mb-0-5);
+}
+.input-box label{
+    margin-left: var(--mb-0-25);
+}
+
+/* css for right side contents */
+section .right-content{
+    padding: 1rem .8rem;
+    flex: 1.7;
+}
+.right-content h3{
+    margin-bottom: var(--mb-0-75);
+}
+.right-content small{
+    font-size: var(--smaller-font-size);
+}
+.right-content .right-content-cards{
+    margin-bottom: var(--mb-1-5);
+}
+.right-content .card{
+    position: relative;
+    flex: 1 1 20rem;
+    margin: var(--mb-0-5);
+}
+.card .card-category{
+    position: absolute;
+    background-color: var(--red-color);
+    color: var(--white-color);
+    border-bottom-left-radius: .7rem;
+    border-top-right-radius: .7rem;
+    font-size: var(--small-font-size);
+    padding: .3rem;
+    top: .7rem;
+    left: -.5rem;
+}
+.card .body-title{
+    text-transform: capitalize;
+}
+.card .number-rating-container{
+    margin-left: var(--mb-0-25);
+    font-size: var(--smaller-font-size);
+}
