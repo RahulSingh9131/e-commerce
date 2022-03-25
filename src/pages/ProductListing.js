@@ -6,7 +6,7 @@ function ProductListing() {
 
     const {state,dispatch}=useFilter();
 
-    function getSortedData(productlist,state){
+    const getSortedData=(productlist,state)=>{
         if(state.sortBy==="HIGH_TO_LOW"){
             return productlist.sort((a,b)=>b["price"]-a["price"]);
         }else if(state.sortBy==="LOW_TO_HIGH"){
@@ -16,7 +16,7 @@ function ProductListing() {
         }
     }
 
-    function getFilterData(productlist,state){
+    const getFilterData=(productlist,state)=>{
         return productlist
         .filter(({isFormal})=>(state.isFormal?isFormal:true))
         .filter(({isSports})=>(state.isSports?isSports:true))
