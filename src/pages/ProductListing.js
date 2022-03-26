@@ -1,8 +1,11 @@
 import Header from '../components/Header';
 import {products} from "../backend/db/products";
 import { useFilter } from '../context/FilterContext';
+import { useCart } from '../context/CartContext';
 
 function ProductListing() {
+
+    const {cartState,cartDispatch}=useCart();
 
     const {state,dispatch}=useFilter();
 
@@ -94,8 +97,8 @@ function ProductListing() {
                                         </div>
                                     </div>
                                     <div className="card-button">
-                                        <button className="card-btn">Add To Cart</button>
-                                        <button className="card-btn">Move To Wishlist</button>
+                                        <button className="card-btn" onClick={()=>cartDispatch({type:"ADD_TO_CART",payload:item.price})}>Add To Cart</button>
+                                        <button className="card-btn" onClick={()=>cartDispatch({type:"ADD_TO_WISHLIST"})}>Move To Wishlist</button>
                                     </div>
                                 </div>
                             </div>
