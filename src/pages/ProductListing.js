@@ -1,8 +1,13 @@
 import Header from '../components/Header';
 import {products} from "../backend/db/products";
 import { useFilter } from '../context/FilterContext';
+import { useCart } from '../context/CartContext';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function ProductListing() {
+
+    const {cartState,cartDispatch}=useCart();
 
     const {state,dispatch}=useFilter();
 
@@ -26,6 +31,9 @@ function ProductListing() {
 
     const sortedData=getSortedData(products,state);
     const filteredData=getFilterData(sortedData,state);
+
+    const cartNotify = () => toast.success("Your Product is added to cart!!",{position:"bottom-center"});
+    const wishNotify=()=>toast.info("Item is added to the wishlist!!",{position:"top-center"});
 
   return (
     <div className='productListing'>
@@ -94,8 +102,9 @@ function ProductListing() {
                                         </div>
                                     </div>
                                     <div className="card-button">
-                                        <button className="card-btn">Add To Cart</button>
-                                        <button className="card-btn">Move To Wishlist</button>
+                                        <button className="card-btn" onClick={()=>{cartNotify(); cartDispatch({type:"ADD_TO_CART",payload:item.price}) }}>Add To Cart</button>
+                                        <button className="card-btn" onClick={()=>{wishNotify(); cartDispatch({type:"ADD_TO_WISHLIST"}) }}>Move To Wishlist</button>
+                                        <ToastContainer position='bottom-center'/>
                                     </div>
                                 </div>
                             </div>
