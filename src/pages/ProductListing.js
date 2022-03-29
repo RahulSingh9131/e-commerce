@@ -1,13 +1,10 @@
 import Header from '../components/Header';
 import {products} from "../backend/db/products";
 import { useFilter } from '../context/FilterContext';
-import { useCart } from '../context/CartContext';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import ProductCard from '../components/ProductCard';
 
 function ProductListing() {
 
-    const {cartState,cartDispatch}=useCart();
 
     const {state,dispatch}=useFilter();
 
@@ -32,8 +29,6 @@ function ProductListing() {
     const sortedData=getSortedData(products,state);
     const filteredData=getFilterData(sortedData,state);
 
-    const cartNotify = () => toast.success("Your Product is added to cart!!",{position:"bottom-center"});
-    const wishNotify=()=>toast.info("Item is added to the wishlist!!",{position:"top-center"});
 
   return (
     <div className='productListing'>
@@ -81,33 +76,9 @@ function ProductListing() {
                         <h3>Showing all products <small> (total {filteredData.length} products)</small></h3>
                     </div>
                     <div className='rigth-content-cards flex flex-wrap'>
-                        {filteredData.map((item)=>{
+                        {filteredData.map(({_id,categoryName,src,title,price,originalPrice,discount,rating,quantity})=>{
                             return (
-                            <div className="card shadow-card" key={item._id}>
-                                <h3 className='card-category'>{item.categoryName}</h3>
-                                <div className="card-top">
-                                  <img className="card-img" src={item.src} alt="productCard" />
-                                </div>
-                                <div className="card-bottom">
-                                    <div className="card-body">
-                                        <h1 className="body-title">{item.title}</h1>
-                                        <div className="body-text">
-                                            <p>₹  {item.price}</p>
-                                            <p className="text-overline">₹  {item.originalPrice}</p>
-                                            <span>({item.discount}% off)</span>
-                                            <div className='number-rating-container'>
-                                                <span>{item.rating}</span>
-                                                <i className='fa fa-star'></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="card-button">
-                                        <button className="card-btn" onClick={()=>{cartNotify(); cartDispatch({type:"ADD_TO_CART",payload:item.price}) }}>Add To Cart</button>
-                                        <button className="card-btn" onClick={()=>{wishNotify(); cartDispatch({type:"ADD_TO_WISHLIST"}) }}>Move To Wishlist</button>
-                                        <ToastContainer position='bottom-center'/>
-                                    </div>
-                                </div>
-                            </div>
+                                <ProductCard _id={_id} categoryName={categoryName} src={src} title={title} price={price} originalPrice={originalPrice} discount={discount} rating={rating} quantity={quantity} />
                             )
                         })}
 

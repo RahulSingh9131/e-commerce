@@ -1,0 +1,24 @@
+.cart-card,.price-card{
+    flex: 1 1 25rem;
+    margin: var(--mb-0-75);
+}
+.cartpage .section-heading{
+    margin: var(--mb-1) 0;
+}
+.cartpage .number-rating-container{
+    margin-top: var(--mb-0-5);
+    width: 100%;
+    max-width: 5rem;
+}
+.cartpage .quantity-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white-color);
+    background-color: var(--secondary);
+    padding: .3rem;
+    margin: 0 var(--mb-0-25);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
