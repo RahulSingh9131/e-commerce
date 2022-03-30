@@ -1,10 +1,28 @@
+import React,{useState,useEffect} from "react";
 import Header from '../components/Header';
-import {products} from "../backend/db/products";
 import { useFilter } from '../context/FilterContext';
 import ProductCard from '../components/ProductCard';
+import { useCart } from '../context/CartContext';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios";
 
 function ProductListing() {
 
+    const [products,setProducts]=useState([]);
+
+    const fetchProducts= async ()=>{
+        try{
+            const res = await axios.get("/api/products");
+            setProducts(res.data.products);
+        }catch(e){
+            alert("There's something wrong with the endpoints");
+        }
+    }
+
+    useEffect(()=>fetchProducts(),[]);
+
+    const {cartState,cartDispatch}=useCart();
 
     const {state,dispatch}=useFilter();
 
