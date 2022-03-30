@@ -36,9 +36,9 @@ function CartPage() {
                                         </div>
                                         <div className="quantity-text flex align-center">
                                             <p>Quantity :</p>
-                                            <button className="quantity-btn">+</button>
+                                            <button className="quantity-btn flex justify-center align-center">+</button>
                                             <small>{quantity}</small>
-                                            <button className="quantity-btn">-</button>
+                                            <button className="quantity-btn flex justify-center align-center">-</button>
                                         </div>
                                         <div className='number-rating-container'>
                                             <span>{rating}</span>

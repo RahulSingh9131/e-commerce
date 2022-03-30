@@ -8,7 +8,6 @@ function ProductCard({_id,categoryName,src,title,originalPrice,price,discount,ra
     const {cartState,cartDispatch}=useCart();
 
     const {cartBasket}=cartState;
-    console.log(cartBasket);
 
     
     const addToCart=()=>{
