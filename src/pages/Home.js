@@ -9,7 +9,7 @@ function Home() {
 
     const fetchCategory= async ()=>{
         try{
-            const res= await axios.get("/api/categories1");
+            const res= await axios.get("/api/categories");
             setCategory(res.data.categories); 
         }catch(e){
             alert("error occured!! check api endpoints..");
