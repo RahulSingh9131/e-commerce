@@ -1,10 +1,24 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
+import axios from 'axios';
 import HeroImage from "../assets/hero-img.png";
 import { Link } from 'react-router-dom';
 import "../css/main.css";
-import { categories } from '../backend/db/categories';
 
 function Home() {
+    const [category,setCategory]=useState([]);
+
+    const fetchCategory= async ()=>{
+        try{
+            const res= await axios.get("/api/categories");
+            setCategory(res.data.categories); 
+        }catch(e){
+            alert("error occured!! check api endpoints..");
+            console.log(e);
+        }
+
+    }
+
+    useEffect(fetchCategory,[]);
   return (
     <div className='Home'>
     <main>
@@ -58,7 +72,7 @@ function Home() {
                         <span>s</span>
                     </h1>
                     <div className="box-container">
-                        {categories.map((item)=>{
+                        {category && category.map((item)=>{
                             return (<div className='box'>
                                 <img src={item.src} alt="category-img"/>
                                 <div className='content'>
