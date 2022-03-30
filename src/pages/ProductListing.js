@@ -19,7 +19,7 @@ function ProductListing() {
         }
     }
 
-    useEffect(fetchProducts,[]);
+    useEffect(()=>fetchProducts(),[]);
 
     const {cartState,cartDispatch}=useCart();
 
