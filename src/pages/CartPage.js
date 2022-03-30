@@ -19,7 +19,7 @@ function CartPage() {
             </div>
             <div className="section-contents container ">
                 <div className='flex flex-wrap justify-center'>
-                    {cartBasket.map(({_id,categoryName,src,price,originalPrice,discount,rating,title,quantity})=>{
+                    {cartBasket.map(({_id,categoryName,src,price,originalPrice,discount,rating,title,count})=>{
                         return (
                             <div className="card card-horizontal cart-card" key={_id}>
                                 <div className="card-top">
@@ -36,9 +36,9 @@ function CartPage() {
                                         </div>
                                         <div className="quantity-text flex align-center">
                                             <p>Quantity :</p>
-                                            <button className="quantity-btn flex justify-center align-center">+</button>
-                                            <small>{quantity}</small>
-                                            <button className="quantity-btn flex justify-center align-center">-</button>
+                                            <button className="quantity-btn flex justify-center align-center" onClick={()=>cartDispatch({type:"INCREMENT_QUANTITY",payload:{_id:_id,price:Number(price),discount:Number(originalPrice)}})}>+</button>
+                                            <small>{count}</small>
+                                            <button className="quantity-btn flex justify-center align-center" onClick={()=>cartDispatch({type:"DECREMENT_QUANTITY",payload:{_id:_id,price:Number(price),discount:Number(originalPrice)}})}>-</button>
                                         </div>
                                         <div className='number-rating-container'>
                                             <span>{rating}</span>
@@ -46,7 +46,7 @@ function CartPage() {
                                         </div>
                                     </div>
                                     <div className="card-button card-horizontal-btn">
-                                        <button className="card-btn" onClick={()=>cartDispatch({type:"REMOVE_FROM_CART",_id:_id,price:Number(price),discount:Number(originalPrice)})}>Remove from Cart</button>
+                                        <button className="card-btn" onClick={()=>cartDispatch({type:"REMOVE_FROM_CART",payload:{_id:_id,price:Number(price),discount:Number(originalPrice)}})}>Remove from Cart</button>
                                         <button className="card-btn">Move To Wishlist</button>
                                     </div>
                                 </div>

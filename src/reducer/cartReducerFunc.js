@@ -1,22 +1,46 @@
 export const cartReducerFunc=(cartState,action)=>{
+
+    const {cartBasket}=cartState;
+
     switch(action.type){
         case "ADD_TO_CART":
             return {...cartState,
                 cartTotalPrice:cartState.cartTotalPrice+action.payload,
                 cartDiscount:cartState.cartDiscount+action.discount,
-                cartBasket:[...cartState.cartBasket,action.item]}; 
+                cartBasket:[...cartState.cartBasket,{...action.item,count:1}]}; 
         case "REMOVE_FROM_CART":
-            const index=cartState.cartBasket.findIndex((elem)=>elem.id===action._id);
+            const index=cartBasket.findIndex((elem)=>elem._id===action.payload._id);
             let newCartBasket=[...cartState.cartBasket];
-            if(index){
+            if(index>=0){
                 newCartBasket.splice(index,1);
             }else{
                 alert(`cannot remove the product(id:${action._id}) as its not in the cartbasket`)
             }
             return {...cartState,
                 cartBasket:newCartBasket,
-                cartTotalPrice:cartState.cartTotalPrice-action.price,
-                cartDiscount:cartState.cartDiscount-action.discount};       
+                cartTotalPrice:cartState.cartTotalPrice-action.payload.price,
+                cartDiscount:cartState.cartDiscount-action.payload.discount}; 
+        case "INCREMENT_QUANTITY":  
+                const foundItem=cartBasket.find((elem)=>elem._id===action.payload._id);
+                const updatedCartBasket=[...cartState.cartBasket];
+                const incrementCartBasket= updatedCartBasket.map((elem)=>elem._id===foundItem._id?{...elem,count:elem.count+1}:{...elem})
+             
+                return {...cartState,
+                    cartBasket:incrementCartBasket,
+                    cartTotalPrice:cartState.cartTotalPrice+action.payload.price,
+                    cartDiscount:cartState.cartDiscount+action.payload.discount};
+        case "DECREMENT_QUANTITY":
+            const foundDecrementItem=cartBasket.find((elem)=>elem._id===action.payload._id);
+            if(foundDecrementItem.count===1){
+                const decrementCartBasket=cartBasket.filter((elem)=>elem._id!==foundDecrementItem._id)
+                return {...cartState,cartBasket:decrementCartBasket,
+                     cartTotalPrice:cartState.cartTotalPrice-action.payload.price,
+                     cartDiscount:cartState.cartDiscount-action.payload.discount}
+            }else{
+                const  decrementCartBasket=cartBasket.map((elem)=>elem._id===foundDecrementItem._id?{...elem,count:elem.count-1}:{...elem})
+                return {...cartState,
+                    cartBasket:decrementCartBasket};
+            }       
         case "ADD_TO_WISHLIST":
             return {...cartState,wishItems:cartState.wishItems+1}     
         default :
