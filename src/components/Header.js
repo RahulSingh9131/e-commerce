@@ -5,6 +5,7 @@ import { useCart } from '../context/CartContext';
 
 function Header() {
     const {cartState} =useCart();
+    const {cartBasket}=cartState;
   return (
       <header className='header'>
             <div class="navigation-container">
@@ -18,7 +19,7 @@ function Header() {
                 <div class="right">
                     <nav class="nav-links">
                         <Link to="/" className="fas fa-user"><small> user</small></Link>
-                        <Link  to="/" className="fa fa-shopping-cart"><strong className='header-badge'>{cartState.cartItems}</strong></Link>
+                        <Link  to="/cart" className="fa fa-shopping-cart"><strong className='header-badge'>{cartBasket?.length}</strong></Link>
                         <Link to="/" className="fas fa-heart" ><strong className='header-badge'>{cartState.wishItems}</strong></Link>
                     </nav>
                 </div>

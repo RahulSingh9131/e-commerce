@@ -3,5 +3,6 @@
 @import url("./variables.css");
 @import url("./screens/home.css");
 @import url("./screens/productListing.css");
+@import url("./screens/cart.css");
 
 @import url("./mediaQueries.css");
