@@ -8,8 +8,14 @@ function Home() {
     const [category,setCategory]=useState([]);
 
     const fetchCategory= async ()=>{
-        const res= await axios.get("/api/categories");
-        setCategory(res.data.categories); 
+        try{
+            const res= await axios.get("/api/categories1");
+            setCategory(res.data.categories); 
+        }catch(e){
+            alert("error occured!! check api endpoints..");
+            console.log(e);
+        }
+
     }
 
     useEffect(fetchCategory,[]);
@@ -66,7 +72,7 @@ function Home() {
                         <span>s</span>
                     </h1>
                     <div className="box-container">
-                        {category.map((item)=>{
+                        {category && category.map((item)=>{
                             return (<div className='box'>
                                 <img src={item.src} alt="category-img"/>
                                 <div className='content'>
