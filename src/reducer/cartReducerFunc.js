@@ -40,10 +40,16 @@ export const cartReducerFunc=(cartState,action)=>{
                 const  decrementCartBasket=cartBasket.map((elem)=>elem._id===foundDecrementItem._id?{...elem,count:elem.count-1}:{...elem})
                 return {...cartState,
                     cartBasket:decrementCartBasket};
-            }       
-        case "ADD_TO_WISHLIST":
-            return {...cartState,wishItems:cartState.wishItems+1}     
+            } 
+        case "MOVE_TO_CART":
+            const foundWishItem=cartBasket.find((elem)=>elem._id===action.moveItem._id);
+            if(foundWishItem){
+                const foundWishBasket=cartBasket.map((elem)=>elem._id===foundWishItem._id?{...elem,count:elem.count+1}:{...elem})
+                return {...cartState,cartBasket:foundWishBasket};
+            }else{
+                return {...cartState,cartBasket:[...cartState.cartBasket,{...action.moveItem,count:1}]}
+            }        
         default :
-        return state;
+        return cartState;
     }
 }

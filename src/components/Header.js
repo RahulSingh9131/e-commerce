@@ -2,10 +2,12 @@ import React from 'react'
 import "../css/main.css";
 import {Link} from "react-router-dom";
 import { useCart } from '../context/CartContext';
+import { useWishlist } from '../context/WishContext';
 
 function Header() {
     const {cartState} =useCart();
     const {cartBasket}=cartState;
+    const {wishState:{wishBasket}}=useWishlist();
   return (
       <header className='header'>
             <div class="navigation-container">
@@ -20,7 +22,7 @@ function Header() {
                     <nav class="nav-links">
                         <Link to="/" className="fas fa-user"><small> user</small></Link>
                         <Link  to="/cart" className="fa fa-shopping-cart"><strong className='header-badge'>{cartBasket?.length}</strong></Link>
-                        <Link to="/" className="fas fa-heart" ><strong className='header-badge'>{cartState.wishItems}</strong></Link>
+                        <Link to="/wishlist" className="fas fa-heart" ><strong className='header-badge'>{wishBasket?.length}</strong></Link>
                     </nav>
                 </div>
             </div>

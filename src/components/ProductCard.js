@@ -2,12 +2,13 @@ import React from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useCart } from '../context/CartContext';
+import { useWishlist } from '../context/WishContext';
 
 function ProductCard({_id,categoryName,src,title,originalPrice,price,discount,rating,quantity}) {
 
-    const {cartState,cartDispatch}=useCart();
+    const {cartDispatch}=useCart();
+    const {wishDispatch}=useWishlist();
 
-    const {cartBasket}=cartState;
 
     
     const addToCart=()=>{
@@ -29,8 +30,18 @@ function ProductCard({_id,categoryName,src,title,originalPrice,price,discount,ra
     }
 
     const addToWishlist=()=>{
-        cartDispatch({
-            type:"ADD_TO_WISHLIST"
+        wishDispatch({
+            type:"ADD_TO_WISHLIST",
+            wishItem:{
+                _id:_id,
+                categoryName:categoryName,
+                src:src,
+                title:title,
+                originalPrice:originalPrice,
+                price:price,
+                discount:discount,
+                rating:rating
+            }
         })
     }
 
@@ -60,7 +71,7 @@ function ProductCard({_id,categoryName,src,title,originalPrice,price,discount,ra
                 </div>
                 <div className="card-button">
                     <button className="card-btn" onClick={()=>{cartNotify(); addToCart(); }}>Add To Cart</button>
-                    <button className="card-btn" onClick={()=>{wishNotify(); addToWishlist(); }}>Move To Wishlist</button>
+                    <button className="card-btn" onClick={()=>{wishNotify(); addToWishlist(); }}>Add To Wishlist</button>
                     <ToastContainer position='bottom-center'/>
                 </div>
             </div>
