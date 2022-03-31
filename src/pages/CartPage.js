@@ -1,4 +1,5 @@
 import React from 'react'
+import CartCard from '../components/CartCard';
 import Header from '../components/Header'
 import SubTotalCard from '../components/SubTotalCard';
 import { useCart } from '../context/CartContext';
@@ -6,8 +7,7 @@ import "../css/main.css"
 
 function CartPage() {
  
-    const {cartState,cartDispatch}=useCart();
-    const {cartBasket}=cartState;
+    const {cartState:{cartBasket},cartDispatch}=useCart();
   
 
   return (
@@ -21,36 +21,7 @@ function CartPage() {
                 <div className='flex flex-wrap justify-center'>
                     {cartBasket.map(({_id,categoryName,src,price,originalPrice,discount,rating,title,count})=>{
                         return (
-                            <div className="card card-horizontal cart-card" key={_id}>
-                                <div className="card-top">
-                                    <img className="card-img" src= {src} alt="cartImage" />
-                                </div>
-                                <div className="card-bottom">
-                                    <div className="card-body">
-                                        <h1 className="body-title">{title}</h1>
-                                        <h3 className="card-category">{categoryName}</h3>
-                                        <div className="body-text">
-                                            <p>₹ {price}</p>
-                                            <p className="text-overline">₹ {originalPrice}</p>
-                                            <span>({discount}% off)</span>
-                                        </div>
-                                        <div className="quantity-text flex align-center">
-                                            <p>Quantity :</p>
-                                            <button className="quantity-btn flex justify-center align-center" onClick={()=>cartDispatch({type:"INCREMENT_QUANTITY",payload:{_id:_id,price:Number(price),discount:Number(originalPrice)}})}>+</button>
-                                            <small>{count}</small>
-                                            <button className="quantity-btn flex justify-center align-center" onClick={()=>cartDispatch({type:"DECREMENT_QUANTITY",payload:{_id:_id,price:Number(price),discount:Number(originalPrice)}})}>-</button>
-                                        </div>
-                                        <div className='number-rating-container'>
-                                            <span>{rating}</span>
-                                            <i className='fa fa-star'></i>
-                                        </div>
-                                    </div>
-                                    <div className="card-button card-horizontal-btn">
-                                        <button className="card-btn" onClick={()=>cartDispatch({type:"REMOVE_FROM_CART",payload:{_id:_id,price:Number(price),discount:Number(originalPrice)}})}>Remove from Cart</button>
-                                        <button className="card-btn">Move To Wishlist</button>
-                                    </div>
-                                </div>
-                            </div>
+                            <CartCard _id={_id} categoryName={categoryName} src={src} price={price} originalPrice={originalPrice} discount={discount} rating={rating} title={title} count={count} />
                         )
                     })}
                 </div>

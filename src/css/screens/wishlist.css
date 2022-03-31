@@ -1,0 +1,6 @@
+.wishlist h1{
+    margin: var(--mb-1);
+}
+.wishlist .wish-card{
+    margin: var(--mb-0-75);
+}

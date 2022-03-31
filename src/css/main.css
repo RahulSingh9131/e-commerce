@@ -4,5 +4,6 @@
 @import url("./screens/home.css");
 @import url("./screens/productListing.css");
 @import url("./screens/cart.css");
+@import url("./screens/wishlist.css");
 
 @import url("./mediaQueries.css");
