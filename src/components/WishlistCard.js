@@ -4,7 +4,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishContext';
 
-function WishlistCard({_id,src,categoryName,price,originalPrice,title,discount,rating}){
+function WishlistCard(item){
+
+    const {_id,src,categoryName,price,originalPrice,title,discount,rating}=item;
     const {cartDispatch}=useCart();
     const {wishDispatch}=useWishlist();
 
