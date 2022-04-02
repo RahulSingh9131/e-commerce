@@ -20,7 +20,7 @@ function Header() {
                 </div>
                 <div class="right">
                     <nav class="nav-links">
-                        <Link to="/" className="fas fa-user"><small> user</small></Link>
+                        <Link to="/logout" className="fas fa-user" ><small> Logout</small></Link>
                         <Link  to="/cart" className="fa fa-shopping-cart"><strong className='header-badge'>{cartBasket?.length}</strong></Link>
                         <Link to="/wishlist" className="fas fa-heart" ><strong className='header-badge'>{wishBasket?.length}</strong></Link>
                     </nav>
