@@ -78,7 +78,7 @@ function Home() {
                                 <div className='content'>
                                     <h1>{item.categoryName}</h1>
                                     <p>{item.description}</p>
-                                    <Link to="/" className='btn' >See More</Link>
+                                    <Link to="/products" className='btn' >See More</Link>
                                 </div>
                             </div>)
                         })}
