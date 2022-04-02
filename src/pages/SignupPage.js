@@ -58,31 +58,31 @@ function SignupPage() {
                 <form onSubmit={(e)=>e.preventDefault()}>
                     <h1>SignUp</h1>
                     <div className="form-control">
-                        <label for="firstname">Firstname</label>
+                        <label htmlFor="firstname">Firstname</label>
                         <input type="text" id="firstname" name='firstname' placeholder="firstname" value={signup.firstname} onChange={changeHandeler}  />
                     </div>
                     <div className="form-control">
-                        <label for="lastname">Lastname</label>
+                        <label htmlFor="lastname">Lastname</label>
                         <input type="text" id="lastname" name="lastname" placeholder="lastname" value={signup.lastname} onChange={changeHandeler} />
                     </div>
                     <div className="form-control">
-                        <label for="email">Email</label>
+                        <label htmlFor="email">Email</label>
                         <input type="email" id="email" name="email" placeholder="abc@gmail.com" value={signup.email} onChange={changeHandeler} />
                     </div>
                     <div className="form-control">
-                        <label for="password">Password</label>
+                        <label htmlFor="password">Password</label>
                         <div className="fas fa-eye-slash password-icon" onClick={showPass}></div>
                         <input type={type} id="password" name="password" placeholder="enter password" value={signup.password} onChange={changeHandeler} />
                     </div>
                     <div className="form-control">
-                        <label for="confirm-password">Confirm Password</label>
+                        <label htmlFor="confirm-password">Confirm Password</label>
                         <div className="fas fa-eye-slash password-icon" onClick={showConfirmPass}></div>
                         <input type={confirmtype} id="confirm-password" name="confirmpass" placeholder="confirm password" value={signup.confirmpass} onChange={changeHandeler} />
                     </div>
                     <div className="checkbox-container">
                         <input type="checkbox" id="remember"/>
-                        <label for="remember">Remember me</label>
-                        <a href="#" className="forgot-password-link">Forgot Password?</a>
+                        <label htmlFor="remember">Remember me</label>
+                        <Link to="#" className="forgot-password-link">Forgot Password?</Link>
                     </div>
                     <button className="login-btn btn-primary" onClick={clickHandeler} >create new account</button>
                     <small className="flex center-text"><Link to="/login" className="sign-up-link">Already have an account?</Link></small>
