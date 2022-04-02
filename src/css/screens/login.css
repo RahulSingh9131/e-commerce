@@ -1,0 +1,65 @@
+.login-section .login-container{
+    max-width: 70vw;
+}
+.login-section .login-container form{
+    background-color: var(--white-color);
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    padding: .7rem 1rem;
+}
+.form-control label{
+    display: block;
+    font-size: var(--smaller-font-size);
+    margin-bottom: var(--mb-0-25);
+}
+.form-control input{
+    width: 100%;
+    padding: .2rem;
+    outline: none;
+    margin-bottom: var(--mb-0-75);
+}
+.checkbox-container{
+    font-size: var(--smaller-font-size);
+    margin-bottom: var(--mb-1-5);
+}
+.checkbox-container a{
+    color: var(--secondary-darker);
+    margin-left: var(--mb-1);
+}
+.checkbox-container a:hover{
+    text-decoration: underline;
+}
+.login-btn{
+    display: block;
+    padding: .5rem;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    color: var(--white-color);
+    margin-bottom: var(--mb-1);
+}
+form small{
+    font-size: var(--smaller-font-size);
+}
+form small a{
+    color: var(--secondary-darker);
+    margin-left: var(--mb-0-25);
+}
+form small a:hover{
+    text-decoration: underline;
+}
+.login .error{
+    color: var(--red-color);
+    margin-top: -1rem;
+    padding: 0;
+}
+
+@media screen and (max-width: 870px){
+    form small .sign-up-link{
+        display: inline-block ;
+    }
+    form .checkbox-container .forgot-password-link{
+        display: inline-block;
+    }
+}

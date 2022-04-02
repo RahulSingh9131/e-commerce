@@ -33,7 +33,7 @@ function Home() {
                            <li><a href="https://github.com/RahulSingh9131" target="_blank">Github</a></li>
                            <li><a href="https://twitter.com/singhrahul3112" target="_blank">Twitter</a></li>
                            <li><a href="https://www.linkedin.com/in/rahul-singh-06b83917a/" target="_blank">LinkedIn</a></li>
-                           <li><Link to="/" className='btn'>LogIn</Link></li>
+                           <li><Link to="/login" className='btn'>LogIn</Link></li>
                         </ul>
                     </div>
                 </div>
