@@ -6,5 +6,6 @@
 @import url("./screens/cart.css");
 @import url("./screens/wishlist.css");
 @import url("./screens/login.css");
+@import url("./screens/signup.css");
 
 @import url("./mediaQueries.css");

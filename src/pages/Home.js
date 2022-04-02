@@ -49,7 +49,7 @@ function Home() {
                             ShoeStore contains a wide range of footwear products with multiple categories. SignUp to explore the store.
                         </p>
                         <div className="cta">
-                            <Link to="/" className='btn'>SignUp</Link>
+                            <Link to="/signup" className='btn'>SignUp</Link>
                         </div>
                     </div>
                     <div className="right-side">
