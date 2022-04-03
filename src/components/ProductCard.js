@@ -23,9 +23,7 @@ function ProductCard({_id,categoryName,src,title,originalPrice,price,discount,ra
                 price:price,
                 discount:discount,
                 rating:rating,
-            },
-            payload:Number(price),
-            discount:Number(originalPrice)
+            }
         })   
     }
 

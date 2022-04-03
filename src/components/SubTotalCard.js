@@ -4,10 +4,19 @@ import { useCart } from '../context/CartContext';
 function SubTotalCard() {
     const {cartState}=useCart();
     const {cartBasket}=cartState;
-    const cartPrice=cartState.cartTotalPrice;
-    const discount=cartState.cartDiscount-cartState.cartTotalPrice;
+
+    const cartPrice=cartBasket.reduce((acc,curr)=>{
+        return acc+Number(curr.price)*(curr.count);
+    },0)
+
+    const originalPrice=cartBasket.reduce((acc,curr)=>{
+        return acc+Number(curr.originalPrice)*(curr.count);
+    },0)
+
+    const discount=originalPrice-cartPrice;
     const cartDelivery=499;
-    const total=cartPrice+cartDelivery-discount;
+    const totalPrice=cartPrice+cartDelivery-discount;
+
   return (
     <div className='SubTotalCard'>
         <div className="card text-only-card price-card">
@@ -28,7 +37,7 @@ function SubTotalCard() {
                     </div>
                     <div className="body-text flex justify-space align-center">
                         <p>Total Amount</p>
-                        <p>₹ {total}</p>
+                        <p>₹ {totalPrice}</p>
                     </div>
                     <div className="body-text body-message">
                         <p>

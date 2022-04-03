@@ -44,9 +44,9 @@ function CartCard({_id,src,title,categoryName,originalPrice,price,discount,count
                     </div>
                     <div className="quantity-text flex align-center">
                         <p>Quantity :</p>
-                        <button className="quantity-btn flex justify-center align-center" onClick={()=>cartDispatch({type:"INCREMENT_QUANTITY",payload:{_id:_id,price:Number(price),discount:Number(originalPrice)}})}>+</button>
+                        <button className="quantity-btn flex justify-center align-center" onClick={()=>cartDispatch({type:"INCREMENT_QUANTITY",payload:{_id:_id}})}>+</button>
                         <small>{count}</small>
-                        <button className="quantity-btn flex justify-center align-center" onClick={()=>cartDispatch({type:"DECREMENT_QUANTITY",payload:{_id:_id,price:Number(price),discount:Number(originalPrice)}})}>-</button>
+                        <button className="quantity-btn flex justify-center align-center" onClick={()=>cartDispatch({type:"DECREMENT_QUANTITY",payload:{_id:_id}})}>-</button>
                     </div>
                     <div className='number-rating-container'>
                         <span>{rating}</span>
@@ -54,7 +54,7 @@ function CartCard({_id,src,title,categoryName,originalPrice,price,discount,count
                     </div>
                 </div>
                 <div className="card-button card-horizontal-btn">
-                    <button className="card-btn" onClick={()=>cartDispatch({type:"REMOVE_FROM_CART",payload:{_id:_id,price:Number(price),discount:Number(originalPrice)}})}>Remove from Cart</button>
+                    <button className="card-btn" onClick={()=>cartDispatch({type:"REMOVE_FROM_CART",payload:{_id:_id}})}>Remove from Cart</button>
                     <button className="card-btn" onClick={()=>{wishNotify(); addToWish();}}>Move To Wishlist</button>
                     <ToastContainer/>
                 </div>
