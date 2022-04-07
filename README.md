@@ -8,4 +8,4 @@
  5.wishlist management
 
 
-run this website localy be clickking here- https://e-commerce-9131.netlify.app/
+run this website locally by clickking here- https://e-commerce-9131.netlify.app/
