@@ -21,7 +21,7 @@ function CartPage() {
                 <div className='flex flex-wrap justify-center'>
                     {cartBasket.map(({_id,categoryName,src,price,originalPrice,discount,rating,title,count})=>{
                         return (
-                            <CartCard _id={_id} categoryName={categoryName} src={src} price={price} originalPrice={originalPrice} discount={discount} rating={rating} title={title} count={count} />
+                            <CartCard key={_id} _id={_id} categoryName={categoryName} src={src} price={price} originalPrice={originalPrice} discount={discount} rating={rating} title={title} count={count} />
                         )
                     })}
                 </div>

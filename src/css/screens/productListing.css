@@ -38,7 +38,7 @@ section{
 }
 section .left-subcontent{
     background-color: var(--body-color);
-    padding: 1rem .8rem;
+    padding: 0.5rem .8rem;
     flex: .3;
     font-size: var(--small-font-size);
 }

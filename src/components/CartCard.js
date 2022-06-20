@@ -7,7 +7,7 @@ import { useWishlist } from '../context/WishContext';
 function CartCard({_id,src,title,categoryName,originalPrice,price,discount,count,rating}) {
 
     const {cartDispatch}=useCart();
-    const {wishDispatch}=useWishlist();
+    const {wishDispatch,wishState:{wishBasket}}=useWishlist();
 
     const addToWish=()=>{
         wishDispatch({
@@ -55,7 +55,13 @@ function CartCard({_id,src,title,categoryName,originalPrice,price,discount,count
                 </div>
                 <div className="card-button card-horizontal-btn">
                     <button className="card-btn" onClick={()=>cartDispatch({type:"REMOVE_FROM_CART",payload:{_id:_id}})}>Remove from Cart</button>
-                    <button className="card-btn" onClick={()=>{wishNotify(); addToWish();}}>Move To Wishlist</button>
+                    {
+                        wishBasket.some((c)=>c._id===_id)?(
+                            <button className="card-btn" onClick={()=>wishDispatch({type:"REMOVE_FROM_WISHLIST",payload:_id})}>Remove From Wishlist</button>
+                        ):(
+                            <button className="card-btn" onClick={()=>{wishNotify(); addToWish();}}>Move To Wishlist</button>
+                        )
+                    }
                     <ToastContainer/>
                 </div>
             </div>

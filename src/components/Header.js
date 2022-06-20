@@ -10,16 +10,16 @@ function Header() {
     const {wishState:{wishBasket}}=useWishlist();
   return (
       <header className='header'>
-            <div class="navigation-container">
-                <div class="left">
+            <div className="navigation-container">
+                <div className="left">
                     <h5><Link to="/" className="brand-name">ShoeStore</Link></h5>
                 </div>
-                <div class="middle">
+                <div className="middle">
                     <input type="search" placeholder="search here.." id="search-input"/>
-                    <label for="search-input" class="fas fa-search"></label>
+                    <label htmlFor="search-input" className="fas fa-search"></label>
                 </div>
-                <div class="right">
-                    <nav class="nav-links">
+                <div className="right">
+                    <nav className="nav-links">
                         <Link to="/logout" className="fas fa-user" ><small> Logout</small></Link>
                         <Link  to="/cart" className="fa fa-shopping-cart"><strong className='header-badge'>{cartBasket?.length}</strong></Link>
                         <Link to="/wishlist" className="fas fa-heart" ><strong className='header-badge'>{wishBasket?.length}</strong></Link>

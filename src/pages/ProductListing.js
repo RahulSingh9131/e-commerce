@@ -41,7 +41,8 @@ function ProductListing() {
         .filter(({isFormal})=>(state.isFormal?isFormal:true))
         .filter(({isSports})=>(state.isSports?isSports:true))
         .filter(({isBoot})=>(state.isBoot?isBoot:true))
-        .filter(({rating})=>Number(rating) <= state.rating);
+        .filter(({rating})=>Number(rating) <= state.rating)
+        .filter(({price})=>Number(price) <= state.price);
     }
 
     const sortedData=getSortedData(products,state);
@@ -62,26 +63,30 @@ function ProductListing() {
                         <h3>Price</h3>
                         <div className="input-box">
                             <input type="radio" name="sort" id="low" checked={state.sortBy==="LOW_TO_HIGH"?true:false} onChange={()=>dispatch({type:"SORT",payload:"LOW_TO_HIGH"})}/>
-                            <label for="low">Low to High</label>
+                            <label htmlFor="low">Low to High</label>
                         </div>
                         <div className="input-box">
                             <input type="radio" name="sort" id="high" checked={state.sortBy==="HIGH_TO_LOW"?true:false} onChange={()=>dispatch({type:"SORT",payload:"HIGH_TO_LOW"})}/>
-                            <label for="high">High to Low</label>
+                            <label htmlFor="high">High to Low</label>
                         </div>
+                    </div>
+                    <div className="left-subcontent">
+                        <h3>Price 0-{state.price}</h3>
+                        <input type="range" name="price" id="price" min="800" max="3200" steps="100" value={state.price} onChange={(e)=>dispatch({type:"PRICE",payload:e.target.value})}/>
                     </div>
                     <div className="left-subcontent flex flex-col">
                         <h3>Category</h3>
                         <div className="input-box">
                             <input type="checkbox" name="productCategory" id="formal" checked={state.isFormal} onChange={()=>dispatch({type:"FORMAL_SHOES"})} />
-                            <label for="formal">Formal wear</label>
+                            <label htmlFor="formal">Formal wear</label>
                         </div>
                         <div className="input-box">
                             <input type="checkbox" name="productCategory" id="sports" checked={state.isSports} onChange={()=>dispatch({type:"SPORTS_SHOES"})} />
-                            <label for="sports">Sports wear</label>
+                            <label htmlFor="sports">Sports wear</label>
                         </div>
                         <div className="input-box">
                             <input type="checkbox" name="productCategory" id="boots" checked={state.isBoot} onChange={()=>dispatch({type:"BOOTS"})} />
-                            <label for="boots">Boots</label>
+                            <label htmlFor="boots">Boots</label>
                         </div>
                     </div>
                     <div className="left-subcontent">
@@ -96,7 +101,7 @@ function ProductListing() {
                     <div className='rigth-content-cards flex flex-wrap'>
                         {filteredData.map(({_id,categoryName,src,title,price,originalPrice,discount,rating,quantity})=>{
                             return (
-                                <ProductCard _id={_id} categoryName={categoryName} src={src} title={title} price={price} originalPrice={originalPrice} discount={discount} rating={rating} quantity={quantity} />
+                                <ProductCard key={_id} _id={_id} categoryName={categoryName} src={src} title={title} price={price} originalPrice={originalPrice} discount={discount} rating={rating} quantity={quantity} />
                             )
                         })}
 

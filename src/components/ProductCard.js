@@ -6,11 +6,9 @@ import { useWishlist } from '../context/WishContext';
 
 function ProductCard({_id,categoryName,src,title,originalPrice,price,discount,rating,quantity}) {
 
-    const {cartDispatch}=useCart();
-    const {wishDispatch}=useWishlist();
+    const {cartDispatch,cartState:{cartBasket}}=useCart();
+    const {wishDispatch,wishState:{wishBasket}}=useWishlist();
 
-
-    
     const addToCart=()=>{
         cartDispatch({
             type:"ADD_TO_CART",
@@ -68,8 +66,16 @@ function ProductCard({_id,categoryName,src,title,originalPrice,price,discount,ra
                     </div>
                 </div>
                 <div className="card-button">
-                    <button className="card-btn" onClick={()=>{cartNotify(); addToCart(); }}>Add To Cart</button>
-                    <button className="card-btn" onClick={()=>{wishNotify(); addToWishlist(); }}>Add To Wishlist</button>
+                    {cartBasket.some((c)=>c._id===_id)?(
+                      <button className="card-btn" onClick={()=>cartDispatch({type:"REMOVE_FROM_CART",payload:{_id:_id}})}>Remove From Cart</button>
+                    ):(
+                      <button className="card-btn" onClick={()=>{cartNotify(); addToCart(); }}>Add To Cart</button>
+                    )}
+                    {wishBasket.some((c)=>c._id===_id)?(
+                      <button className="card-btn" onClick={()=>wishDispatch({type:"REMOVE_FROM_WISHLIST",payload:_id})}>Remove From Wishlist</button>
+                    ):(
+                      <button className="card-btn" onClick={()=>{wishNotify(); addToWishlist(); }}>Add To Wishlist</button>
+                    )}
                     <ToastContainer position='bottom-center'/>
                 </div>
             </div>

@@ -10,8 +10,10 @@ export function filterReducerFunc(state,action){
             return {...state,isBoot:!state.isBoot};
         case "RATING":
             return {...state,rating:action.payload} ;
+        case "PRICE":
+            return {...state,price:action.payload};
         case "CLEAR":
-            return {sortBy:"",isFormal:false,isSports:false,isBoot:false,rating:5};       
+            return {sortBy:"",isFormal:false,isSports:false,isBoot:false,rating:5,price:3200};       
         default :
             return state;            
     }
