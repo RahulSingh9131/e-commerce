@@ -5,7 +5,7 @@ const FilterContext=createContext();
 
 const FilterProvider=({children})=>{
 
-    const [state,dispatch]=useReducer(filterReducerFunc,{sortBy:"",isFormal:false,isSports:false,isBoot:false,rating:5})
+    const [state,dispatch]=useReducer(filterReducerFunc,{sortBy:"",isFormal:false,isSports:false,isBoot:false,rating:5,price:3200})
     return <FilterContext.Provider value={{state,dispatch}}>
         {children}
     </FilterContext.Provider>

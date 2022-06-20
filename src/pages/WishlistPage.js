@@ -21,7 +21,7 @@ function WishlistPage() {
             <div className="wishlist-contents container flex justify-center flex-wrap">
                 {wishBasket.map(({_id,categoryName,src,title,originalPrice,price,discount,rating})=>{
                     return (
-                        <WishlistCard _id={_id} categoryName={categoryName} src={src} title={title} originalPrice={originalPrice} price={price} discount={discount} rating={rating} />
+                        <WishlistCard key={_id} _id={_id} categoryName={categoryName} src={src} title={title} originalPrice={originalPrice} price={price} discount={discount} rating={rating} />
                     )
                 })}
             </div>

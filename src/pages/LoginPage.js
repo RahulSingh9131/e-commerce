@@ -12,8 +12,7 @@ function LoginPage() {
           navigate("/products")
       }
     }
-
-
+    
   return (
     <div className='login'>
         <section className="login-section">

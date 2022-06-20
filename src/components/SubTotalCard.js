@@ -14,7 +14,7 @@ function SubTotalCard() {
     },0)
 
     const discount=originalPrice-cartPrice;
-    const cartDelivery=499;
+    const cartDelivery=cartBasket.length*50;
     const totalPrice=cartPrice+cartDelivery-discount;
 
   return (
