@@ -39,6 +39,14 @@
     color: var(--white-color);
     margin-bottom: var(--mb-1);
 }
+.test-btn{
+    margin-top: var(--mb-1);
+    background-color:var(--secondary-dark);
+    color: var(--white-color);
+    width: 16rem;
+    max-width: 60vw;
+    cursor: pointer;
+}
 form small{
     font-size: var(--smaller-font-size);
 }

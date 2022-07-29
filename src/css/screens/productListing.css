@@ -12,6 +12,15 @@
     color: var(--white-color);
     font-family: var(--brand-font);
 }
+.nav-links{
+    display: flex;
+}
+.nav-links .logout-btn small{
+    margin-right: var(--mb-1-5);
+    color: var(--white-color);
+    font-weight: var(--font-bold);
+    cursor: pointer;
+}
 .nav-links :link {
     margin-right: var(--mb-1-5);
     font-size: var(--h3-font-size);

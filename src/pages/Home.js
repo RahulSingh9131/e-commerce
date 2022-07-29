@@ -3,9 +3,11 @@ import axios from 'axios';
 import HeroImage from "../assets/hero-img.png";
 import { Link } from 'react-router-dom';
 import "../css/main.css";
+import { useAuth } from '../context/AuthContext';
 
 function Home() {
     const [category,setCategory]=useState([]);
+    const {authState:{encodedToken}}=useAuth();
 
     const fetchCategory= async ()=>{
         try{
@@ -33,7 +35,14 @@ function Home() {
                            <li><a href="https://github.com/RahulSingh9131" target="_blank">Github</a></li>
                            <li><a href="https://twitter.com/singhrahul3112" target="_blank">Twitter</a></li>
                            <li><a href="https://www.linkedin.com/in/rahul-singh-06b83917a/" target="_blank">LinkedIn</a></li>
-                           <li><Link to="/login" className='btn'>LogIn</Link></li>
+                           <li>
+                                {encodedToken?(
+                                    <Link to="/products" className='btn'>Open Store</Link>
+                                ):(
+                                    <Link to="/login" className='btn'>LogIn</Link>
+                                )}
+                                
+                            </li>
                         </ul>
                     </div>
                 </div>

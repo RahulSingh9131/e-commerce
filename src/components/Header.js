@@ -3,11 +3,14 @@ import "../css/main.css";
 import {Link} from "react-router-dom";
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishContext';
+import { useAuth } from '../context/AuthContext';
 
 function Header() {
     const {cartState} =useCart();
     const {cartBasket}=cartState;
     const {wishState:{wishBasket}}=useWishlist();
+    const {logout}=useAuth();
+
   return (
       <header className='header'>
             <div className="navigation-container">
@@ -20,7 +23,9 @@ function Header() {
                 </div>
                 <div className="right">
                     <nav className="nav-links">
-                        <Link to="/logout" className="fas fa-user" ><small> Logout</small></Link>
+                        <div className='logout-btn' onClick={()=>logout()}>
+                            <small> Logout</small> 
+                        </div>
                         <Link  to="/cart" className="fa fa-shopping-cart"><strong className='header-badge'>{cartBasket?.length}</strong></Link>
                         <Link to="/wishlist" className="fas fa-heart" ><strong className='header-badge'>{wishBasket?.length}</strong></Link>
                     </nav>
