@@ -1,9 +1,11 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 
 function SubTotalCard() {
     const {cartState}=useCart();
     const {cartBasket}=cartState;
+    const navigate=useNavigate();
 
     const cartPrice=cartBasket.reduce((acc,curr)=>{
         return acc+Number(curr.price)*(curr.count);
@@ -16,6 +18,48 @@ function SubTotalCard() {
     const discount=originalPrice-cartPrice;
     const cartDelivery=cartBasket.length*50;
     const totalPrice=cartPrice+cartDelivery-discount;
+
+    const loadScript=(src)=>{
+        return new Promise((resolve)=>{
+            const script = document.createElement('script')
+            script.src=src
+
+            script.onload=()=>{
+                resolve(true);
+            }
+            script.onerror=()=>{
+                resolve(false)
+            }
+
+            document.body.appendChild(script)
+        })
+    }
+
+    const displayRazorpay= async (amount)=>{
+        const res= await loadScript('https://checkout.razorpay.com/v1/checkout.js')
+        if(!res){
+            alert("you are offline..failed to load Sdk")
+            return 
+        }
+
+        const options={
+            key : "rzp_test_9sOhNE8KsEK7zs",
+            currency:"INR",
+            amount: amount*100,
+            name:"Shoe Store",
+            description:"Thanks for purchasing from us",
+
+            handler:function (response){
+                alert(response.razorpay_payment_id)
+                navigate("/payment");
+            },
+            prefill:{
+                name:"Shoe Store"
+            }
+        }
+        const paymentObject= new window.Razorpay(options)
+        paymentObject.open()
+    }
 
   return (
     <div className='SubTotalCard'>
@@ -46,7 +90,9 @@ function SubTotalCard() {
                     </div>
                 </div>
                 <div className="card-button">
-                    <button className="card-btn">Place Order</button>
+                    <button className="card-btn" onClick={()=>displayRazorpay(totalPrice)}>
+                        Place Order
+                    </button>
                 </div>
             </div>
         </div>
