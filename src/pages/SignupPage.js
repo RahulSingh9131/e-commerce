@@ -9,27 +9,6 @@ function SignupPage() {
 
     const {signup,authState,authDispatch}=useAuth();
 
-    // const navigate=useNavigate();
-
-    // const changeHandeler=(e)=>{
-    //     const value=e.target.value;
-    //     setSignup({
-    //         ...signup,
-    //         [e.target.name]: value
-    //     })
-    // }
-
-    // const clickHandeler=()=>{
-    //     const {email,password,firstname,lastname,confirmpass}=signup;
-    //     if(email && password && firstname && lastname && confirmpass){
-    //         if(password === confirmpass){
-    //            navigate("/products");
-    //         }else{
-    //             setMsg(true);
-    //         }
-    //     }
-    // }
-
     const showPass=()=>{
         if(type==="password"){
             setType("text");
