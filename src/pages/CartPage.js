@@ -8,7 +8,6 @@ import "../css/main.css"
 function CartPage() {
  
     const {cartState:{cartBasket},cartDispatch}=useCart();
-  
 
   return (
     <div className='cartpage'>
@@ -26,7 +25,13 @@ function CartPage() {
                     })}
                 </div>
                 <div className='flex flex-wrap justify-center'>
-                    <SubTotalCard/>
+                    {cartBasket?.length>0?(
+                        <SubTotalCard/>
+                    ):(
+                        <div>
+                            <p>You have nothing in your cart..</p>
+                        </div>
+                    )}
                 </div>     
             </div>
         </section>

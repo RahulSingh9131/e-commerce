@@ -8,5 +8,6 @@
 @import url("./screens/login.css");
 @import url("./screens/signup.css");
 @import url("./screens/logout.css");
+@import url("./screens/payment.css");
 
 @import url("./mediaQueries.css");
