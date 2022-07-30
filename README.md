@@ -22,7 +22,7 @@
 </ul>
 
 ******************
-<p>Live link is here 👉 - [https://pebble-play.netlify.app/](https://e-commerce-9131.netlify.app/)</p>
+<p>Live link is here 👉 - https://e-commerce-9131.vercel.app/</p>
 
 <p> To run this app locally , first clone this repositiry using git clone and install all the dependencies and start the development server using npm start.</p>
 
