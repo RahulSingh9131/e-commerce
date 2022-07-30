@@ -9,7 +9,7 @@ function Header() {
     const {cartState} =useCart();
     const {cartBasket}=cartState;
     const {wishState:{wishBasket}}=useWishlist();
-    const {logout}=useAuth();
+    const {logout,authState:{encodedToken}}=useAuth();
 
   return (
       <header className='header'>
@@ -23,9 +23,11 @@ function Header() {
                 </div>
                 <div className="right">
                     <nav className="nav-links">
-                        <div className='logout-btn' onClick={()=>logout()}>
-                            <small> Logout</small> 
-                        </div>
+                        {encodedToken && (
+                            <div className='logout-btn' onClick={()=>logout()}>
+                                <small> Logout</small> 
+                            </div>
+                        )}
                         <Link  to="/cart" className="fa fa-shopping-cart"><strong className='header-badge'>{cartBasket?.length}</strong></Link>
                         <Link to="/wishlist" className="fas fa-heart" ><strong className='header-badge'>{wishBasket?.length}</strong></Link>
                     </nav>

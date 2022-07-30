@@ -1,6 +1,8 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishContext';
 
@@ -8,8 +10,14 @@ function ProductCard({_id,categoryName,src,title,originalPrice,price,discount,ra
 
     const {cartDispatch,cartState:{cartBasket}}=useCart();
     const {wishDispatch,wishState:{wishBasket}}=useWishlist();
+    const {authState:{encodedToken}}=useAuth();
+    const navigate=useNavigate();
 
     const addToCart=()=>{
+        if(!encodedToken){
+            navigate("/login")
+            return;
+        }
         cartDispatch({
             type:"ADD_TO_CART",
             item:{
@@ -26,6 +34,10 @@ function ProductCard({_id,categoryName,src,title,originalPrice,price,discount,ra
     }
 
     const addToWishlist=()=>{
+        if(!encodedToken){
+            navigate("/login")
+            return;
+        }
         wishDispatch({
             type:"ADD_TO_WISHLIST",
             wishItem:{
